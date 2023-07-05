@@ -24,3 +24,7 @@ install_jdk "${BUILD_DIR}" "${CACHE_DIR}"
 
 run_mvn "compile" $BUILD_DIR $CACHE_DIR
 remove_mvn $BUILD_DIR $CACHE_DIR
+
+for DIR in ".m2" ".maven" ; do
+ cp -r $CACHE_DIR/$DIR $BUILD_DIR/$DIR
+done
