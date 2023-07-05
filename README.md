@@ -3,6 +3,6 @@ Heroku buildpack for Java [![CI](https://github.com/heroku/heroku-buildpack-java
 
 
 
-Maven runtime edition
-example procfile: 
-worker: .maven/bin/mvn compile
+Maven runtime edition <br>
+example procfile: <br>
+<b>worker: .maven/bin/mvn compile</b>
