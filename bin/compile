@@ -15,16 +15,16 @@ source $BP_DIR/lib/common.sh
 source $BP_DIR/lib/maven.sh
 source $BP_DIR/lib/buildpack-stdlib-v7.sh
 
+for DIR in ".m2" ".maven" ; do
+ cp -r $CACHE_DIR/$DIR $BUILD_DIR/$DIR
+done
+
 export_env $ENV_DIR "." "JAVA_OPTS|JAVA_TOOL_OPTIONS"
 
 install_jdk "${BUILD_DIR}" "${CACHE_DIR}"
 
 [ -n "$(find ${BUILD_DIR} -type f -name "*.kt")" ] && mcount "kotlin.source"
 [ -n "$(find ${BUILD_DIR} -type f -name "*.groovy")" ] && mcount "groovy.source"
-
-for DIR in ".m2" ".maven" ; do
- cp -r $CACHE_DIR/$DIR $BUILD_DIR/$DIR
-done
 
 run_mvn "compile" $BUILD_DIR $CACHE_DIR
 remove_mvn $BUILD_DIR $CACHE_DIR
