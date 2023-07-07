@@ -12,6 +12,8 @@ if has_postgres $BUILD_DIR; then
   cat <<EOF
 addons:
   - heroku-postgresql
+config_vars:
+  PATH: .maven/bin:$PATH
 EOF
 fi
 
